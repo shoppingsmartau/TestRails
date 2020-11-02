@@ -1,22 +1,41 @@
-<div class="container" id="home-container">
+   <div class="container">
 
-    <div class="jumbotron text-center text-white">
-      <h1 class="display-4">Alpha Blog!</h1>
-      <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-      <hr class="my-4">
-      <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-      <a class="btn btn-success btn-lg" href="#" role="button">Sign Up!</a>
-    </div>
-</div>
 
-<div class="container text-center">
-          <div class="row justify-content-center">
-            <div class="col-md-7">
-              <h1 class="font-weight-light mt-4 text-white"></h1>
-              <p class="lead text-white-50"></p>
+        <% if @article.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+      
+            <ul>
+              <% article.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        
+        <%= form_with(model: article, local: true) do |form| %>
+      
+          <div class="form-group row">  
+              <%= form.label :title, class: "col-2 col-form-label" %>
+              <div class="col-10"> 
+                <%= form.text_field :title, class: "form-control" %>
+              </div>
+          </div>
+        
+          <div class="form-group row">  
+            <%= form.label :description, class: "col-2 col-form-label" %>
+            <div class="col-10"> 
+            <%= form.text_area :description, rows: 10, class: "form-control" %>
             </div>
           </div>
-        </div>
+          
+          <div class="form-group row">
+            <%= form.submit class: "btn btn-outline-light btn-lg" %>
+          </div>
         
-        
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <% end %>
+
+         <%= link_to Cancel and return to articles listing', articles_path %>
+
+
+    </div>
