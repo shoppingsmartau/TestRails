@@ -1,41 +1,10 @@
-   <div class="container">
-
-
-        <% if @article.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
-      
-            <ul>
-              <% article.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
-        
-        <%= form_with(model: article, local: true) do |form| %>
-      
-          <div class="form-group row">  
-              <%= form.label :title, class: "col-2 col-form-label" %>
-              <div class="col-10"> 
-                <%= form.text_field :title, class: "form-control" %>
-              </div>
-          </div>
-        
-          <div class="form-group row">  
-            <%= form.label :description, class: "col-2 col-form-label" %>
-            <div class="col-10"> 
-            <%= form.text_area :description, rows: 10, class: "form-control" %>
-            </div>
-          </div>
-          
+   <div class="row justify-content-center">
+        <div class="col-10">
+          <%= render 'shared/errors' %>
+          <%= form_with(model: @user, class: "shadow p-3 mb-3 bg-info rounded", local: true) do |f| %>
           <div class="form-group row">
-            <%= form.submit class: "btn btn-outline-light btn-lg" %>
+            <%= f.label :username, class: "col-2 col-form-label text-light" %>
+          <div class="col-10">
+            <%= f.text_field :username, class: "form-control shadow rounded", placeholder: "Enter a username" %>
           </div>
-        
-        <% end %>
-
-         <%= link_to Cancel and return to articles listing', articles_path %>
-
-
-    </div>
+        </div>
