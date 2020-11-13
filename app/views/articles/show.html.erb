@@ -4,12 +4,16 @@
       <div class="container">
     
              <div class="row justify-content-md-center">
+               
                 <div class="col-8 mt-4"> 
+                
                   <div class="card text-center shadow mb-5 bg-white rounded" style="width: 18rem;">
                     
                     <div class="card-header font-italic">
                       
                       by <%= @article.user.username %>
+                      
+                      <%= link_to gravatar_for(@article.user, size: 50), user_path(@article.user) %>
                       
                     </div>
                     <div class="card-body">
@@ -17,7 +21,7 @@
                       <div class="card-text text-left"><%= simple_format(@article.description) %></div>
                       <%= link_to "Edit", edit_article_path(@article), class: "btn btn btn-secondary" %>
                       <%= link_to "Delete", article_path(@article), class: "btn btn-danger" %>
-                    </div>
+                      </div>
                     
                     <div class="card-footer text-muted">
                       <small> Created <%= time_ago_in_words(@article.created_at) %>, ago
@@ -26,7 +30,7 @@
                   </div>
                 </div>
               </div>
-        
+   
             
       </div>    
       
