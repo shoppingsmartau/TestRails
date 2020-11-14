@@ -12,7 +12,6 @@ class UsersController < ApplicationController
     
     def show
         @user = User.find(params[:id])
-        
         @articles = @user.articles.paginate(page: params[:page], per_page: 2)
     end
 
@@ -20,6 +19,7 @@ class UsersController < ApplicationController
     def create
         @user = User.new(user_params)
             if @user.save
+                    session[:user_id] = @user.id
                     flash[:notice] = "Dear #{@user.username} Welcome to the United Automation"
                     redirect_to articles_path
             else

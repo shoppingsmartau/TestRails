@@ -1,12 +1,3 @@
-<%= render 'article' %>  
-
-<%= will_paginate @articles %>
-
-
-<div class="container">
-  <% @users.each do |user| %>
-    <div class="row justify-content-md-center">
-       <%= render 'user' %> 
-    </div>
-  <% end %>
-</div>
+                    <li class="nav-item">
+                      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li>
