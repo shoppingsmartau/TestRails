@@ -17,10 +17,7 @@
                               </a>
                               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <%= link_to "Create new article", new_article_path, class: "dropdown-item" %>
-                                <%= link_to "View article", articles_path, class: "dropdown-item" %>
-                                <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="#">Something else here</a>
-                              </div>
+                                <%= link_to "View article", articles_path, class: "dropdown-item " %>
                             </li>
                             
                             <li class="nav-item dropdown">
@@ -31,7 +28,9 @@
                               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <%= link_to current_user.username.capitalize, user_path(current_user), class: "dropdown-item" %>
                                 <%= link_to "Edit Profile", edit_user_path(current_user), class: "dropdown-item" %>
-
+                                <%= link_to "Delete Profile", user_path(current_user), class: "dropdown-item text-danger", method: :delete, data: { confirm: "Do you want to delete your profile?"} %>
+                                <div class="dropdown-divider"></div>
+                                <%= link_to "Log Out", logout_path, class: "dropdown-item", method: :delete %>
                               </div>
                             </li>
                       <% else %>                   

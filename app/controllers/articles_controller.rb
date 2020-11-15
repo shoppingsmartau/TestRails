@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-
+  before_action :require_user
+  before_action :require_same_user, only: [:edit, :update, :destroy]
   # GET /articles
   # GET /articles.json
   def index
@@ -72,4 +73,13 @@ class ArticlesController < ApplicationController
     def article_params
       params.require(:article).permit(:title, :description)
     end
+    
+    def require_same_user
+      if current_user != @article.user
+        flash[:alert] = "You are not authorised to edit this article"
+        redirect_to @article
+      end
+    end
+    
+    
 end
