@@ -20,7 +20,7 @@
                       
                       <div class="card-text text-left"><%= simple_format(@article.description) %></div>
                       
-                      <% if logged_in? && @article.user == current_user %>
+                      <% if (logged_in? && @article.user == current_user) || (logged_in? && current_user.admin == true) %>
                           <%= link_to "Edit", edit_article_path(@article), class: "btn btn btn-secondary" %>
                           <%= link_to "Delete", article_path(@article), class: "btn btn-danger" %>
                       <% end %>

@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     
     def destroy
         @user.destroy
-        session[:user_id] = nil
+        session[:user_id] = nil if @user == current_user
         flash[:notice] = "This profile is now deleted"
         redirect_to root_path
     end
