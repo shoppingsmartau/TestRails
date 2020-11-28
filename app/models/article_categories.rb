@@ -1,5 +1,5 @@
-class Article < ApplicationRecord
-    belongs_to :article
+class ArticleCategory < ApplicationRecord
+    belongs_to :articles
     belongs_to :categories
     
 end
